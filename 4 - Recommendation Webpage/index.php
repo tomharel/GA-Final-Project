@@ -27,9 +27,9 @@
 	global $connection;	
 	
 	// Rec table
-	$table = 'recommendations2';
+	$rec_table = 'recommendations2';
 	if (isset($_REQUEST['rec_table'])) {
-		$table = $_REQUEST['rec_table'];
+		$rec_table = $_REQUEST['rec_table'];
 	}
 	
 	$rand = FALSE;
@@ -78,7 +78,7 @@
 		$params .= " LIMIT {$limit}";
 	}
 	
-	$sql = "SELECT r.item_id, r.rating, i.restaurant_name, i.item_name, i.img FROM recommendations r INNER JOIN items i ON (r.item_id = i.item_id)  WHERE client_id = {$client_id} {$params}";
+	$sql = "SELECT r.item_id, r.rating, i.restaurant_name, i.item_name, i.img FROM {$rec_table} r INNER JOIN items i ON (r.item_id = i.item_id)  WHERE client_id = {$client_id} {$params}";
 	$query = mysqli_query($connection, $sql);
 	$results = array();
 	while ($z = mysqli_fetch_assoc($query)) {
