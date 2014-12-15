@@ -27,7 +27,7 @@
 	global $connection;	
 	
 	// Rec table
-	$rec_table = 'recommendations2';
+	$rec_table = 'recommendations';
 	if (isset($_REQUEST['rec_table'])) {
 		$rec_table = $_REQUEST['rec_table'];
 	}
